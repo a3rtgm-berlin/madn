@@ -1,95 +1,84 @@
-<head>
-    <title>Mänschn ørger dytschn nytschn!</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="../js/jquery.min.js"></script>
-</head>
-<body>
-    <div id="app">
-        <h1 id="title">S'gehtn, Aldør?</h1>
-        <div
-            v-if="!playerRegistered"
-            id="check-in"
-        >
-            <label for="name">Wer bynst'n du am bynsen, Aldør?</label>
-            <input v-model="playerName" type="text" name="name" minlength="3">
-            <button class="check-in" @click="checkIn">Ab geht die Wahnsinnsfahrt, Aldør!</button>
-        </div>
-        <div
-            v-if="playerRegistered"
-            id="choose-avatar"    
-        >
-            <h3>Choose dein Presenter, Aldør!</h3>
-            <div class="avatars">
-                <button
-                    v-for="(avatar, name) in avatars"
-                    :class="chooseAvatarClass(avatar, name)"
-                    :disabled="registeredPlayerAvatars.includes(name) && name !== playerAvatar"
-                    :style="chooseAvatarStyle(avatar, name)"
-                    @click="playerAvatar = name"
-                >
-                    {{ name }}
-                </button>
-            </div>
-        </div>
-        <div id="game" class="hidden"></div>
-        <div
-            v-if="allPlayers.length > 1"
-            id="players"
-        >
-            <h3>Die geymligen Geygner</h3>
-            <ul>
-                <li
-                    v-for="player in allPlayers.filter(p => p.name !== playerName)"
-                    class="player-panel"
-                >
-                    <img
-                        src=""
-                        alt=""
-                        class="player-avatar"    
-                    >
-                    <div class="player-tag">
-                        <h4 class="player-name">
-                            {{ player.name }}
-                        </h4>
-                        <span 
-                            :class="['player-ready', player.ready ? 'green' : 'red']"
-                        />
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div
-            v-if="playerRegistered"
-            id="player"
-        >
-            <img
-                src=""
-                :alt="playerAvatar"
-                class="player-avatar"    
-            >
-            <h2 class="name">{{ playerName }}</h2>
+<div id="lobby" v-if="!gameStarted">
+    <h1 id="title">S'gehtn, Aldør?</h1>
+    <div
+        v-if="!playerRegistered"
+        id="check-in"
+    >
+        <label for="name">Wer bynst'n du am bynsen, Aldør?</label>
+        <input v-model="playerName" type="text" name="name" minlength="3">
+        <button class="check-in" @click="checkIn">Ab geht die Wahnsinnsfahrt, Aldør!</button>
+    </div>
+    <div
+        v-if="playerRegistered"
+        id="choose-avatar"    
+    >
+        <h3>Choose dein Presenter, Aldør!</h3>
+        <div class="avatars">
             <button
-                :class="[playerState ? 'green set-not-ready' : 'red set-ready', !playerAvatar ? 'disabled' : '']"
-                :disabled="!playerAvatar"
-                @click="playerState = !playerState"
+                v-for="(avatar, name) in avatars"
+                :class="chooseAvatarClass(avatar, name)"
+                :disabled="registeredPlayerAvatars.includes(name) && name !== playerAvatar"
+                :style="chooseAvatarStyle(avatar, name)"
+                @click="playerAvatar = name"
             >
-                <template v-if="!playerState">
-                    Bynste <strong>Børeit</strong>, Aldør?
-                </template>
-                <template v-else>
-                    I byns <strong>Børeit</strong> am bynsen, Aldør!
-                </template>
+                {{ name }}
             </button>
         </div>
-        <div
-            v-if="countdownText"
-            id="overlay"
-        >
-            {{ countdownText }}
-        </div>
     </div>
-
-    <script src="../socket.io/socket.io.js"></script>
-    <script src="../js/lobby.js"></script>
-</body>
+    <div id="game" class="hidden"></div>
+    <div
+        v-if="allPlayers.length > 1"
+        id="players"
+    >
+        <h3>Die geymligen Geygner</h3>
+        <ul>
+            <li
+                v-for="player in allPlayers.filter(p => p.name !== playerName)"
+                class="player-panel"
+            >
+                <img
+                    src=""
+                    alt=""
+                    class="player-avatar"    
+                >
+                <div class="player-tag">
+                    <h4 class="player-name">
+                        {{ player.name }}
+                    </h4>
+                    <span 
+                        :class="['player-ready', player.ready ? 'green' : 'red']"
+                    />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div
+        v-if="playerRegistered"
+        id="player"
+    >
+        <img
+            src=""
+            :alt="playerAvatar"
+            class="player-avatar"    
+        >
+        <h2 class="name">{{ playerName }}</h2>
+        <button
+            :class="[playerState ? 'green set-not-ready' : 'red set-ready', !playerAvatar ? 'disabled' : '']"
+            :disabled="!playerAvatar"
+            @click="playerState = !playerState"
+        >
+            <template v-if="!playerState">
+                Bynste <strong>Børeit</strong>, Aldør?
+            </template>
+            <template v-else>
+                I byns <strong>Børeit</strong> am bynsen, Aldør!
+            </template>
+        </button>
+    </div>
+    <div
+        v-if="countdownText"
+        id="overlay"
+    >
+        {{ countdownText }}
+    </div>
+</div>

@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded(true));
 app.use('/', express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, 'public/views/lobby.html'));
+    res.status(200).sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 server.listen(port, () => {
