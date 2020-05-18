@@ -95,6 +95,7 @@ module.exports = class MADN {
         if (this.playersReady === this.players.length) {
             this.radio.emit('gameStarted');
             this.board = new Board(this.playerNumber);
+            playerCount = 
             this.players.forEach((player, i) => {
                 player.set({
                     'start': i * 10,
