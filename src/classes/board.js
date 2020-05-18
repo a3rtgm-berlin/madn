@@ -2,9 +2,20 @@ const Field = require('./field');
 
 module.exports = class Board {
     constructor (playerCount) {
-        this.fields = new Array(playerCount * 10);
         
-        for (let i = 0; i < playerCount * 10; i++) {
+        if(playerCount <= 3) {
+        this.fields = new Array(playerCount * 12);
+        fixFields = 12;
+        } else if (playerCount > 3 && playercount < 6 ) {
+            this.fields = new Array(playerCount * 10);
+            fixFields = 10;
+        } else if (playerCount >= 6){    
+            this.fields = new Array(playerCount * 8);
+            fixFields = 8;
+        }
+
+
+        for (let i = 0; i < playerCount * fixFields; i++) {
             this.fields[i] = new Field();
         }
 
