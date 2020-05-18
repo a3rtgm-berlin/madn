@@ -1,0 +1,180 @@
+*, html {
+    margin: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+a, strong, i, small {
+    margin: 0;
+    padding: 0;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.red {
+    background-color: darkred;
+    stroke: darkred;
+}
+
+.green {
+    background-color: greenyellow;
+    stroke: greenyellow;
+    color: #222;
+}
+
+.blue {
+    background-color: royalblue;
+    stroke: royalblue;
+}
+
+.yellow {
+    background-color: gold;
+    stroke: gold;
+    color: #222;
+}
+
+.pink {
+    background-color: deeppink;
+    stroke: deeppink;
+}
+
+.violet {
+    background-color: darkviolet;
+    stroke: darkviolet;
+}
+
+.orange {
+    background-color: orangered;
+    stroke: orangered;
+}
+
+.lavender {
+    background-color: lavender;
+    stroke: lavender;
+    color: #222;
+}
+
+.magenta {
+    background-color: magenta;
+    stroke: magenta;
+}
+
+.aquamarine {
+    background-color: aquamarine;
+    stroke: aquamarine;
+    color: #222;
+}
+
+.teal {
+    background-color: teal;
+    stroke: teal;
+}
+
+.disabled {
+    opacity: 0.7;
+    filter: grayscale(0.7);
+    cursor: not-allowed;
+}
+
+button.disabled:hover {
+    opacity: 0.7;
+}
+
+#check-in {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    color: #222;
+}
+
+button {
+    background-color: tomato;
+}
+
+button.set-not-ready {
+    color: #111;
+}
+button.set-not-ready strong {
+    color: #111;
+}
+
+body {
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.hidden {
+    display: none;
+}
+
+#game {
+    margin: 20px;
+    width: 600px;
+    height: 600px;
+    background: pink;
+}
+
+.player-panel {
+    display: flex;
+    border: 2px solid white;
+}
+
+.player-tag {
+    display: flex;
+    align-items: center;
+}
+
+.player-name {
+    padding: 0;
+}
+
+.player-avatar {
+    width: 64px;
+    height: 64px;
+}
+
+.player-ready {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    border: 2px solid white;
+    padding: 0;
+}
+
+#choose-avatar .avatars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#choose-avatar .avatars button {
+    width:20vw;
+    height: 20vw;
+}
+
+#choose-avatar .avatars button.selected {
+    outline: 4px solid yellowgreen;
+    outline-offset: 4px;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    line-height: 100vh;
+    text-align: center;
+    font-size: 50vh;
+    pointer-events: none;
+}

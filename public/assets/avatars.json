@@ -1,0 +1,58 @@
+{
+    "Bert": {
+        "avatar": "",
+        "token": "",
+        "sounds": "",
+        "taken": false,
+        "color": ["lavender", "lavender"]
+    },
+    "Anna": {
+        "avatar": "",
+        "token": "",
+        "sounds": "",
+        "taken": false,
+        "color": ["teal", "teal"]
+    },
+    "Dani": {
+        "avatar": "",
+        "token": "",
+        "sounds": "",
+        "taken": false,
+        "color": ["pink", "deeppink"]
+    },
+    "Sabs": {
+        "avatar": "",
+        "token": "",
+        "sounds": "",
+        "taken": false,
+        "color": ["yellow", "gold"]
+    },
+    "Thrym": {
+        "avatar": "",
+        "token": "",
+        "sounds": "",
+        "taken": false,
+        "color": ["blue", "royalblue"]
+    },
+    "Leo": {
+        "avatar": "",
+        "token": "",
+        "sounds": "",
+        "taken": false,
+        "color": ["aquamarine", "aquamarine"]
+    },
+    "Paulina": {
+        "avatar": "",
+        "token": "",
+        "sounds": "",
+        "taken": false,
+        "color": ["magenta", "magenta"]
+    },
+    "Jimi": {
+        "avatar": "",
+        "token": "",
+        "sounds": "",
+        "taken": false,
+        "color": ["violet", "darkviolet"]
+    }
+}
