@@ -1,31 +1,33 @@
-<div id="lobby" v-if="!gameStarted">
-    <h1 id="title">S'gehtn, Aldør?</h1>
-    <div
-        v-if="!playerRegistered"
-        id="check-in"
-    >
-        <label for="name">Wer bynst'n du am bynsen, Aldør?</label>
-        <input v-model="playerName" type="text" name="name" minlength="3">
-        <button class="check-in" @click="checkIn">Ab geht die Wahnsinnsfahrt, Aldør!</button>
-    </div>
-    <div
-        v-if="playerRegistered"
-        id="choose-avatar"    
-    >
-        <h3>Choose dein Presenter, Aldør!</h3>
-        <div class="avatars">
-            <button
-                v-for="(avatar, name) in avatars"
-                :class="chooseAvatarClass(avatar, name)"
-                :disabled="registeredPlayerAvatars.includes(name) && name !== playerAvatar"
-                :style="chooseAvatarStyle(avatar, name)"
-                @click="playerAvatar = name"
-            >
-                {{ name }}
-            </button>
+<div id="lobby">
+    <div v-if="!gameStarted">
+        <h1 id="title">S'gehtn, Aldør?</h1>
+        <div
+            v-if="!playerRegistered"
+            id="check-in"
+        >
+            <label for="name">Wer bynst'n du am bynsen, Aldør?</label>
+            <input v-model="playerName" type="text" name="name" minlength="3">
+            <button class="check-in" @click="checkIn">Ab geht die Wahnsinnsfahrt, Aldør!</button>
+        </div>
+        <div
+            v-if="playerRegistered"
+            id="choose-avatar"    
+        >
+            <h3>Choose dein Presenter, Aldør!</h3>
+            <div class="avatars">
+                <button
+                    v-for="(avatar, name) in avatars"
+                    :class="chooseAvatarClass(avatar, name)"
+                    :disabled="registeredPlayerAvatars.includes(name) && name !== playerAvatar"
+                    :style="chooseAvatarStyle(avatar, name)"
+                    @click="playerAvatar = name"
+                >
+                    {{ name }}
+                </button>
+            </div>
         </div>
     </div>
-    <div id="game" class="hidden"></div>
+    <slot name="game"></slot>
     <div
         v-if="allPlayers.length > 1"
         id="players"

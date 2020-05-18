@@ -1,0 +1,28 @@
+<head>
+    <title>Mänschn ørger dytschn nytschn!</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/utils.js"></script>
+</head>
+<body>
+    <div id="app">
+        <Lobby
+            :socket="socket"
+            :game-started="gameStarted"
+            :all-players="allPlayers"
+            @start-game="startGame"
+        >
+            <template v-slot:game>
+                <Game 
+                    v-if="gameStarted"
+                    :socket="socket"
+                ></Game>
+            </template>
+        </Lobby>
+    </div>
+    <script src="../socket.io/socket.io.js"></script>
+    <script src="./js/lobby.js"></script>
+    <script src="./js/game.js"></script>
+    <script src="./index.js"></script>
+</body>

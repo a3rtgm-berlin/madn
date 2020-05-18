@@ -9,6 +9,9 @@ const Lobby = () => {
                     },
                     gameStarted: {
                         defaults: false
+                    },
+                    allPlayers: {
+                        defaults: []
                     }
                 },
                 data: () => ({
@@ -17,7 +20,6 @@ const Lobby = () => {
                     playerState: false,
                     playerRegistered: false,
                     playerAvatar: null,
-                    allPlayers: [],
                     avatars: [],
                     countdownText: null
                 }),
@@ -42,18 +44,9 @@ const Lobby = () => {
                     this.fetchGameData();
                 },
                 methods: {
-                    updatePlayers(players) {
-                        console.log(players);
-                        this.allPlayers = players;
-                    },
-                    notify(msg) {
-                        alert(msg); 
-                    },
                     listen() {
-                        this.socket.on('allPlayers', this.updatePlayers);
                         this.socket.on('allPlayersReady', this.countdown);
                         this.socket.on('playerExists', this.createPlayer);
-                        this.socket.on('notify', this.notify)
                     },
                     fetchGameData() {
                         fetch('../assets/avatars.json')
@@ -123,7 +116,7 @@ const Lobby = () => {
                         })
                     },
                     startGame() {
-            
+                        this.$emit("start-game");
                     }
                 },
                 template: template
